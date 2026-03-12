@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Отзывы и Меню пиццерии</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #d35400;
+        }
+        /* Меню */
+        .menu {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+        .category {
+            margin-top: 30px;
+        }
+        .category h3 {
+            background-color: #ffe0b2;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        /* Отзывы */
+        .reviews {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .review {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .review h3 {
+            margin-top: 0;
+            color: #e67e22;
+        }
+        /* Форма отзывов */
+        form {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffe0b2;
+            border-radius: 8px;
+        }
+        form h2 {
+            margin-top: 0;
+            color: #d35400;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #e67e22;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Отзывы и Меню пиццерии</h1>
+
+<!-- Меню -->
+<div class="menu">
+    <h2>Меню</h2>
+    <div class="category">
+        <h3>Бургеры</h3>
+        <div class="item">
+            <span>Классический бургер</span>
+            <span>250 ₽</span>
+        </div>
+        <div class="item">
+            <span>Чизбургер</span>
+            <span>280 ₽</span>
+        </div>
+        <div class="item">
+            <span>Гамбургер с беконом</span>
+            <span>300 ₽</span>
+        </div>
+    </div>
+    <div class="category">
+        <h3>Пицца</h3>
+        <div class="item">
+            <span>Маргарита</span>
+            <span>450 ₽</span>
+        </div>
+        <div class="item">
+            <span>Пепперони</span>
+            <span>500 ₽</span>
+        </div>
+        <div class="item">
+            <span>Четыре сыра</span>
+            <span>520 ₽</span>
+        </div>
+    </div>
+    <div class="category">
+        <h3>Роллы</h3>
+        <div class="item">
+            <span>Классические роллы</span>
+            <span>400 ₽</span>
+        </div>
+        <div class="item">
+            <span>Филадельфия</span>
+            <span>430 ₽</span>
+        </div>
+        <div class="item">
+            <span>Калифорния</span>
+            <span>410 ₽</span>
+        </div>
+    </div>
+</div>
+
+<!-- Отзывы -->
+<div class="reviews" id="reviews">
+    <h2>Отзывы</h2>
+    <div class="review">
+        <h3>Анна</h3>
+        <p>Очень вкусная пицца! Обслуживание быстрое и приятное.</p>
+    </div>
+    <div class="review">
+        <h3>Игорь</h3>
+        <p>Люблю их маргариту, всегда свежая и ароматная.</p>
+    </div>
+    <div class="review">
+        <h3>Мария</h3>
+        <p>Цены нормальные, атмосфера уютная. Рекомендую!</p>
+    </div>
+</div>
+
+<!-- Форма добавления отзыва -->
+<form id="reviewForm">
+    <h2>Оставить свой отзыв</h2>
+    <label for="name">Ваше имя:</label>
+    <input type="text" id="name" required />
+    <label for="comment">Ваш отзыв:</label>
+    <textarea id="comment" rows="4" required></textarea>
+    <button type="submit">Отправить отзыв</button>
+</form>
+
+<script>
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const comment = document.getElementById('comment').value.trim();
+
+        if (name && comment) {
+            const reviewDiv = document.createElement('div');
+            reviewDiv.className = 'review';
+
+            const reviewTitle = document.createElement('h3');
+            reviewTitle.textContent = name;
+
+            const reviewText = document.createElement('p');
+            reviewText.textContent = comment;
+
+            reviewDiv.appendChild(reviewTitle);
+            reviewDiv.appendChild(reviewText);
+
+            document.getElementById('reviews').appendChild(reviewDiv);
+
+            // Очистка формы
+            document.getElementById('reviewForm').reset();
+        }
+    });
+</script>
+
+</body>
+</html>
